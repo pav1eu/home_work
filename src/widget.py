@@ -1,30 +1,29 @@
-from masks import get_mask_card_number
-from masks import get_mask_account
+from masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(card_or_account_number: str) -> str:
     """Эта функция принимает на вход номер карты или счета и возвращает его маску."""
     if 'Счет' in card_or_account_number:
         list_of_symbols = ''.join(card_or_account_number)
-        number = ''
+        masked_number = ''
         for symbols in list(list_of_symbols):
             if symbols.isdigit():
-                number += symbols
-        number = get_mask_account(number)
-        return f'Счет {number}'
+                masked_number += symbols
+        masked_number = get_mask_account(masked_number)
+        return f'Счет {masked_number}'
     else:
         list_of_symbols = ''.join(card_or_account_number)
-        number = ''
+        masked_number = ''
         for symbols in list(list_of_symbols):
             if symbols.isdigit():
-                number += symbols
-        number = get_mask_card_number(number)
-        return f'{card_or_account_number[0:-16]}{number}'
+                masked_number += symbols
+        masked_number = get_mask_card_number(masked_number)
+        return f'{card_or_account_number[0:-16]}{masked_number}'
 
 
-def get_date(date: str) -> str:
+def get_date(correct_date: str) -> str:
     """Функция форматирует и возвращает дату в виде ДД.ММ.ГГГГ."""
-    return f'{date[8:10]}.{date[5:7]}.{date[0:4]}'
+    return f'{correct_date[8:10]}.{correct_date[5:7]}.{correct_date[0:4]}'
 
 
 if __name__ == "__main__":

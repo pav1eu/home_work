@@ -21,5 +21,7 @@ def mask_account_card(card_or_account_number: str) -> str:
         number = get_mask_card_number(number)
         return f'{card_or_account_number[0:-16]}{number}'
 
-print(mask_account_card('Счет 73654108430135874305'))
-print(mask_account_card('Visa Platinum 7000792289606361'))
+
+if __name__ == "__main__":
+    print(mask_account_card('Счет 73654108430135874305'))
+    print(mask_account_card('Visa Platinum 7000792289606361'))

@@ -15,9 +15,11 @@ git clone https://github.com/pav1eu/home_work.git
 2. Запустите одну из представленных строчек для проверки функционала
 ```
 python src/masks.py
-
+```
+```
 python src/widget.py
-
+```
+```
 python src/processing.py
 ```
 ## Документация:

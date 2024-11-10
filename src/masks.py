@@ -22,5 +22,7 @@ def get_mask_account(account_number: Union[int, str]) -> str:
 
 
 if __name__ == "__main__":
-    print(get_mask_card_number(str(input("Впишите номер карты: "))))
-    print(get_mask_account('73654108430135874305'))
+    print('Номер карты: 4276410010685287')
+    print('Маска номера карты: ', get_mask_card_number('4276410010685287'))
+    print('Номер счёта: 73654108430135874305')
+    print('Маска номера счёта: ', get_mask_account('73654108430135874305'))

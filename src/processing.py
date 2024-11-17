@@ -12,6 +12,10 @@ def filter_by_state(
         if "state" in dicts:
             if dicts["state"] == state:
                 list_with_state.append(dicts)
+        else:
+            raise SyntaxError('"state" не в списке сортировка невозможна')
+    if len(list_with_state) == 0:
+        return 'Операций не найдено'
     return list_with_state
 
 
@@ -21,6 +25,9 @@ def sort_by_date(
     """Функция принимает список словарей и необязательный параметр, задающий порядок сортировки,
     Если параметр не указан, сортировка будет производиться от большего к меньшему
     Возвращает новый отсортированный список"""
+    for dicts in list_of_states:
+        if "date" not in dicts:
+            raise SyntaxError('Отсутствует одна дата, сортировка невозможна')
     sorted_list_by_date = sorted(list_of_states, key=lambda date: date["date"], reverse=type_of_sorting)
     return sorted_list_by_date
 
@@ -46,7 +53,7 @@ if __name__ == "__main__":
                 },
                 {
                     "id": 939719570,
-                    "state": "EXECUTED",
+                    "state": "CANCELED",
                     "date": "2018-06-30T02:08:58.425572",
                 },
             ]
@@ -64,7 +71,7 @@ if __name__ == "__main__":
                 {
                     "id": 615064591,
                     "state": "CANCELED",
-                    "date": "2018-10-14T08:21:33.419441",
+
                 },
                 {
                     "id": 594226727,

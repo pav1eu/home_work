@@ -2,8 +2,8 @@ from typing import Union
 
 
 def filter_by_state(
-    list_of_states: Union[list[dict[str, Union[str, int]]]], state: str = "EXECUTED"
-) -> Union[list[dict[str, Union[str, int]]]]:
+        list_of_states: Union[list[dict[str, Union[str, int]]]], state: str = "EXECUTED"
+) -> Union[list[dict[str, Union[str, int]]]] | str:
     """Функция принимает список словарей с необязательным аргументом (state),
     Если аргумент не указан в вызове функции, она принимает стандартный
     И возвращает список словарей отформатированный по 'state'"""
@@ -20,7 +20,7 @@ def filter_by_state(
 
 
 def sort_by_date(
-    list_of_states: Union[Union[list[dict[str, Union[str, int]]]]], type_of_sorting: bool = True
+        list_of_states: Union[Union[list[dict[str, Union[str, int]]]]], type_of_sorting: bool = True
 ) -> Union[list[dict[str, Union[str, int]]]]:
     """Функция принимает список словарей и необязательный параметр, задающий порядок сортировки,
     Если параметр не указан, сортировка будет производиться от большего к меньшему

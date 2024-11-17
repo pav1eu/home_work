@@ -30,4 +30,3 @@ def get_mask_account(account_number: Union[int, str]) -> str:
 if __name__ == "__main__":
     print("Маска номера карты:", get_mask_card_number(4111111111111111))
     print("Маска номера счёта:", get_mask_account('12345678912345678912'))
-

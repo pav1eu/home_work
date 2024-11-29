@@ -26,6 +26,9 @@ python src/widget.py
 ```
 python src/processing.py
 ```
+```
+python src/generators.py
+```
 
 ## Тестирование:
 Для запуска тестирования кода введите команду:

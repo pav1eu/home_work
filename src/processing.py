@@ -2,7 +2,7 @@ from typing import Union
 
 
 def filter_by_state(
-        list_of_states: Union[list[dict[str, Union[str, int]]]], state: str = "EXECUTED"
+    list_of_states: Union[list[dict[str, Union[str, int]]]], state: str = "EXECUTED"
 ) -> Union[list[dict[str, Union[str, int]]]] | str:
     """Функция принимает список словарей с необязательным аргументом (state),
     Если аргумент не указан в вызове функции, она принимает стандартный
@@ -15,19 +15,19 @@ def filter_by_state(
         else:
             raise SyntaxError('"state" не в списке сортировка невозможна')
     if len(list_with_state) == 0:
-        return 'Операций не найдено'
+        return "Операций не найдено"
     return list_with_state
 
 
 def sort_by_date(
-        list_of_states: Union[Union[list[dict[str, Union[str, int]]]]], type_of_sorting: bool = True
+    list_of_states: Union[Union[list[dict[str, Union[str, int]]]]], type_of_sorting: bool = True
 ) -> Union[list[dict[str, Union[str, int]]]]:
     """Функция принимает список словарей и необязательный параметр, задающий порядок сортировки,
     Если параметр не указан, сортировка будет производиться от большего к меньшему
     Возвращает новый отсортированный список"""
     for dicts in list_of_states:
         if "date" not in dicts:
-            raise SyntaxError('Отсутствует одна дата, сортировка невозможна')
+            raise SyntaxError("Отсутствует одна дата, сортировка невозможна")
     sorted_list_by_date = sorted(list_of_states, key=lambda date: date["date"], reverse=type_of_sorting)
     return sorted_list_by_date
 
@@ -71,7 +71,6 @@ if __name__ == "__main__":
                 {
                     "id": 615064591,
                     "state": "CANCELED",
-
                 },
                 {
                     "id": 594226727,

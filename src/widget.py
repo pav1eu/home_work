@@ -10,7 +10,7 @@ def mask_account_card(card_or_account_number: str) -> str:
             if symbols.isdigit():
                 masked_number += symbols
         if len(masked_number) != 20:
-            raise SyntaxError('Неверный формат номера счета')
+            raise SyntaxError("Неверный формат номера счета")
         masked_number = get_mask_account(masked_number)
         return f"{card_or_account_number[0:-20]}{masked_number}"
     else:
@@ -20,7 +20,7 @@ def mask_account_card(card_or_account_number: str) -> str:
             if symbols.isdigit():
                 masked_number += symbols
         if len(masked_number) != 16:
-            raise SyntaxError('Неверный формат номера карты')
+            raise SyntaxError("Неверный формат номера карты")
         masked_number = get_mask_card_number(masked_number)
         return f"{card_or_account_number[0:-16]}{masked_number}"
 
@@ -28,7 +28,7 @@ def mask_account_card(card_or_account_number: str) -> str:
 def get_date(correct_date: str) -> str:
     """Функция форматирует и возвращает дату в виде ДД.ММ.ГГГГ."""
     if len(correct_date) != 26:
-        raise SyntaxError('Неверный формат даты')
+        raise SyntaxError("Неверный формат даты")
     return f"{correct_date[8:10]}.{correct_date[5:7]}.{correct_date[0:4]}"
 
 

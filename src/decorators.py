@@ -1,6 +1,7 @@
 from functools import wraps
-from typing import Callable, Any, Optional
 from time import time
+from typing import Any, Callable, Optional
+
 
 def log(filename: Optional[str] = None) -> Callable:
     """Декоратор для логирования функции, аргументов, результатов и ошибок"""
@@ -27,8 +28,9 @@ def log(filename: Optional[str] = None) -> Callable:
 
     return decorator
 
-def printing(func):
-    def wrapper(*args, **kwargs):
+
+def printing(func: Any) -> Any:
+    def wrapper(*args: Any, **kwargs: Any) -> Any:
         print(f"Function {func} started")
         result = func(*args, **kwargs)
         print(f"Function {func} finished")
@@ -37,8 +39,8 @@ def printing(func):
     return wrapper
 
 
-def timer(func):
-    def wrapper(*args, **kwargs):
+def timer(func: Any) -> Any:
+    def wrapper(*args: Any, **kwargs: Any) -> Any:
         time_1 = time()
         result = func(*args, **kwargs)
         time_2 = time()
@@ -48,11 +50,11 @@ def timer(func):
     return wrapper
 
 
-
 @printing
 @timer
-def my_function():
+def my_function() -> None:
     for i in range(100000000):
         continue
+
 
 print(my_function())

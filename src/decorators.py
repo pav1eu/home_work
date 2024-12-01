@@ -30,6 +30,7 @@ def log(filename: Optional[str] = None) -> Callable:
 
 
 def printing(func: Any) -> Any:
+    """Декоратор сообщает о начале работы функции и ее окончании."""
     def wrapper(*args: Any, **kwargs: Any) -> Any:
         print(f"Function {func} started")
         result = func(*args, **kwargs)
@@ -40,6 +41,7 @@ def printing(func: Any) -> Any:
 
 
 def timer(func: Any) -> Any:
+    """Декоратор включает таймер во время начала функции и когда она закончила работу"""
     def wrapper(*args: Any, **kwargs: Any) -> Any:
         time_1 = time()
         result = func(*args, **kwargs)
@@ -53,6 +55,7 @@ def timer(func: Any) -> Any:
 @printing
 @timer
 def my_function() -> None:
+    """Простой цикл"""
     for i in range(100000000):
         continue
 

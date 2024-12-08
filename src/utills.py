@@ -1,5 +1,6 @@
 import json
 import os
+import pprint
 
 
 def transaction_data(operation_json: str) -> list[dict]:
@@ -16,6 +17,5 @@ def transaction_data(operation_json: str) -> list[dict]:
 project_root = os.path.dirname(os.path.dirname(__file__))
 operations_path = os.path.join(project_root, 'data', 'operations.json')
 
-
 if __name__ == '__main__':
-    print(transaction_data(operations_path))
+    pprint.pprint(transaction_data(operations_path))

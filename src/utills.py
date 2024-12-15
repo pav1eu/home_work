@@ -3,7 +3,6 @@ import logging
 import os
 import pprint
 from typing import Any
-from datetime import datetime
 
 
 def transaction_data(operation_json: str) -> Any:

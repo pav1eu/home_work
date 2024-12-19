@@ -1,30 +1,48 @@
+import logging
+import os
 from typing import Union
 
 
 def get_mask_card_number(card_number: Union[int, str]) -> str:
     """Эта функция принимает на вход номер карты и возвращает ее маску."""
+    logger.info("Начало операции")
     str_card_number = str(card_number)
     if len(str_card_number) == 16:
         if str_card_number.isdigit():
             mask_of_card = f"{str_card_number[0:4]} {str_card_number[4:6]}** **** {str_card_number[-4:]}"
-            return mask_of_card
+            logger.info("Операция завершена")
         else:
-            raise SyntaxError("Неверный формат номера карты")
-    else:
-        raise SyntaxError("Неверный формат номера карты")
+            error = "Формат не поддерживается"
+            logger.error(error)
+            return error
+        return mask_of_card
 
 
 def get_mask_account(account_number: Union[int, str]) -> str:
     """Эта функция принимает на вход номер счета и возвращает его маску."""
+    logger.info("Начало операции")
     str_account_number = str(account_number)
     if len(str_account_number) == 20:
         if str_account_number.isdigit():
             mask_of_account = f"**{str_account_number[-4:]}"
-            return mask_of_account
+            logger.info("Операция завершена")
         else:
-            raise SyntaxError("Неверный формат номера счета")
-    else:
-        raise SyntaxError("Неверный формат номера счета")
+            error = "Формат не поддерживается"
+            logger.error(error)
+            return error
+        return mask_of_account
+
+
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+full_path_file = os.path.join(base_dir, "logs", "masks.log")
+
+
+logger = logging.getLogger(__name__)
+file_handler = logging.FileHandler(full_path_file, encoding="utf-8", mode="w")
+file_formatter = logging.Formatter("%(asctime)s - %(filename)s [%(funcName)s] - %(levelname)s - %(message)s")
+file_handler.setFormatter(file_formatter)
+logger.addHandler(file_handler)
+logger.setLevel(logging.DEBUG)
 
 
 if __name__ == "__main__":

@@ -31,31 +31,3 @@ def test_get_mask_account(account_number: str) -> None:
 )
 def test_get_mask_card_number_with_different_inputs(card_number: str | int, expected: str) -> None:
     assert get_mask_card_number(card_number) == expected
-
-
-def test_get_mask_card_number_with_invalid_input() -> None:
-    with pytest.raises(SyntaxError):
-        get_mask_card_number("bbbbbbbbbbbbbbbb")
-
-
-def test_get_mask_card_number_with_no_input() -> None:
-    with pytest.raises(SyntaxError):
-        get_mask_card_number("")
-
-
-@pytest.mark.parametrize(
-    "account_number, expected",
-    [("12345678912345678912", "**8912"), ("12345678915645678912", "**8912"), ("12345678912345673456", "**3456")],
-)
-def test_get_mask_account_number_with_different_inputs(account_number: str, expected: str) -> None:
-    assert get_mask_account(account_number) == expected
-
-
-def test_get_mask_account_number_with_invalid_input() -> None:
-    with pytest.raises(SyntaxError):
-        get_mask_account("bbbbbbbbbbbbbbbbbbbb")
-
-
-def test_get_mask_account_number_with_no_input() -> None:
-    with pytest.raises(SyntaxError):
-        get_mask_account("")

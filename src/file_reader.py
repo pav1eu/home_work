@@ -33,7 +33,9 @@ def read_excel(path_file: str) -> Any:
 
 
 def search_matches(list_dict: list, str_search: str) -> Any:
-    """Функция принимает на вход список словарей и строку поиска и возвращает список словарей, где найдены совпадения"""
+    """
+    Функция принимает на вход список словарей и строку поиска и возвращает список словарей, где найдены совпадения
+    """
     pattern = re.compile(str_search, flags=re.IGNORECASE)
     new_list = []
     for el in list_dict:

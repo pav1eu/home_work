@@ -8,7 +8,7 @@ list_id = [
 ]
 
 
-def filter_by_state(list_of_data: list, filter_state: str="EXECUTED") -> list:
+def filter_by_state(list_of_data: list, filter_state: str = "EXECUTED") -> list:
     """Функция получает на вход список данных (id, статус и дату) и значение для фильтраций по статусу,
     а затем возвращает новый список данных отобранных по фильтру"""
     new_list_data = []
@@ -22,7 +22,7 @@ def filter_by_state(list_of_data: list, filter_state: str="EXECUTED") -> list:
     return new_list_data
 
 
-def sort_by_date(list_of_data: list, ascending: bool=True) -> list:
+def sort_by_date(list_of_data: list, ascending: bool = True) -> list:
     """Функция получает на вход список данных (id, статус и дату) и значение для сортировки по дате,
     а затем возвращает новый отсортированный список"""
     new_list_data = []

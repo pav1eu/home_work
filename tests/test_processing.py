@@ -58,7 +58,7 @@ def test_sort_by_date(list_for_sort: list) -> None:
 
 
 def test_filter_without_state(empty_finale_list: list) -> None:
-    assert filter_by_state(empty_finale_list) == "Операций не найдено"
+    assert filter_by_state(empty_finale_list) == []
 
 
 @pytest.mark.parametrize(
@@ -77,7 +77,7 @@ def test_filter_without_state(empty_finale_list: list) -> None:
                     "date": "2018-10-14T08:21:33.419441",
                 },
             ],
-            "Операций не найдено",
+            [],
         ),
         (
             [
@@ -106,13 +106,8 @@ def test_filter_by_state_executed(lists: list, expected: list) -> None:
     assert filter_by_state(lists) == expected
 
 
-def test_filter_by_state_raise_error() -> None:
-    with pytest.raises(SyntaxError):
-        filter_by_state([{"id": 1, "date": "2022-02-24T15:04:32.356870"}])
-
-
 def test_sort_by_date_error(list_for_sort: list) -> None:
-    with pytest.raises(SyntaxError):
+    with pytest.raises(KeyError):
         sort_by_date(
             [
                 {

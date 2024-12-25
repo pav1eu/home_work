@@ -1,30 +1,10 @@
 import json
 import logging
 import os
-import pprint
 from typing import Any
 
-
-def transaction_data(operation_json: str) -> Any:
-    """Возврщает транзакции из файла operations.json"""
-    logger.info("Начало выполнение операции")
-
-    try:
-        with open(operation_json, encoding="UTF-8") as transaction:
-            transaction_json = json.load(transaction)
-    except FileNotFoundError as e:
-        logger.error(f"{type(e).__name__}, не найден файл")
-        return []
-    except json.JSONDecodeError as e:
-        logger.error(f"{type(e).__name__}, пустой список")
-        return []
-    logger.info("Данные успешно получены")
-    return transaction_json
-
-
-project_root = os.path.dirname(os.path.dirname(__file__))
-operations_path = os.path.join(project_root, "data", "operations.json")
-full_path_file_logs = os.path.join(project_root, "logs", "utils.log")
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+full_path_file_logs = os.path.join(base_dir, "logs", "utils.log")
 
 logger = logging.getLogger(__name__)
 file_handler = logging.FileHandler(full_path_file_logs, encoding="utf-8", mode="w")
@@ -34,5 +14,24 @@ logger.addHandler(file_handler)
 logger.setLevel(logging.DEBUG)
 
 
-if __name__ == "__main__":
-    pprint.pprint(transaction_data(operations_path))
+def transaction_data(path_file: str) -> Any:
+    """Обработка транзакций. На вход функция принимает путь до файла с транзакциями в формате .json
+    и возвращает в виде списка. Если файл пустой или не содержит список транзакций возращает пустой список."""
+    logger.info("Старт")
+    full_path_file_data = os.path.join(base_dir, "data", path_file)
+
+    try:
+        with open(full_path_file_data, encoding="utf-8") as file_json:
+            data = json.load(file_json)
+
+    except Exception as e:
+        logger.error(f"{type(e).__name__}, возвращен пустой список")
+        return []
+    else:
+        logger.info("Успешно получены данные")
+        return data
+
+
+path_file_operations = "operations.json"
+path_file_empty = "empty.json"
+path_file_test = "utills_test.json"
